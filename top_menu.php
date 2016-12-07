@@ -10,6 +10,37 @@
       ajaxUser.innerHTML = "Welcome " + username + "&nbsp;&nbsp;&nbsp;"
                            + "<a href=\"logout.php\">Log Out</a>";
     }
+
+    function makeRequestObject(){
+      var xmlhttp=false;
+      try {
+        xmlhttp = new ActiveXObject('Msxml2.XMLHTTP');
+      } catch (e) {
+        try {
+          xmlhttp = new
+          ActiveXObject('Microsoft.XMLHTTP');
+        } catch (E) {
+          xmlhttp = false;
+          }
+        }
+        if (!xmlhttp && typeof XMLHttpRequest!='undefined') {
+          xmlhttp = new XMLHttpRequest();
+        }
+      return xmlhttp;
+    }
+
+    function updateCart(){ // #4
+      var xmlhttp=makeRequestObject();
+      xmlhttp.open('GET', 'count_cart.php', true);
+      xmlhttp.onreadystatechange = function(){
+        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+          var ajaxCart = document.getElementById("cart_count_info");
+          ajaxCart.innerHTML = xmlhttp.responseText;
+        }
+      }
+      xmlhttp.send(null);
+    }
+
     </script>
   </head>
   <body>
@@ -52,7 +83,8 @@
                       height:auto;"
                       src="images/cart.png">
           </img>
-          <span id="cartcountinfo"></span>
+          <?php echo "<SCRIPT LANGUAGE=\"JavaScript\">updateCart();</SCRIPT>";?>
+          <span id="cart_count_info"></span>
         </a>
       </td>
     </tr>
@@ -67,8 +99,8 @@
             <ul>
               <li><a href="itemlist.php?category=CellPhone">Smart Phones</a></li>
               <li><a href="itemlist.php?category=Laptop">Laptops</a></li>
-              <li><a href="itemlist.php">Cameras</a></li>
-              <li><a href="itemlist.php">Televisions</a></li>
+              <li><a href="index.php">Cameras</a></li>
+              <li><a href="index.php">Televisions</a></li>
             </ul>
           </li>
 

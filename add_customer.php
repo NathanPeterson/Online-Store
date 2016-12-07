@@ -1,4 +1,5 @@
 <?php
+  include('top_menu.php');
   $connect = mysqli_connect("localhost", "root", "ecomsite", "store") or
   die("Please check the server connection...");
 
@@ -17,7 +18,7 @@
   $zipcode = $_POST['zipcode'];
   $phone_number = $_POST['phone_number'];
 
-  $sql = "INSERT INTO customers (email_address, password, first_name, middle_initial,
+  $sql = "INSERT INTO customer (email_address, password, first_name, middle_initial,
   last_name, address_line1, address_line2, city, state, zipcode, country, phone_number,
   username)
   VALUES ('$email_address', (PASSWORD('$password')), '$first_name', '$middle_initial',

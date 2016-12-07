@@ -1,3 +1,4 @@
+<?php include('top_menu.php'); ?>
 <!DOCTYPE html>
 <html>
   <head>
@@ -7,6 +8,7 @@
     <title>Sign Up!</title>
   </head>
   <body>
+    <br><br><br>
     <form action="add_customer.php" method="post" onsubmit="return validate(this);">
       <table border="0" cellspacing="1" cellpadding="3">
         <tr>

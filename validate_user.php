@@ -22,7 +22,7 @@
      or die("Please, check your server connection.");
 
     $query = "SELECT email_address, username, password, first_name, middle_initial, last_name
-              FROM customers
+              FROM customer
               WHERE (email_address LIKE '" . $_POST['email_or_username'] .
               "' OR username LIKE  '" . $_POST['email_or_username'] ."') ".
               "AND password like (PASSWORD('" . $_POST['password'] . "'))";
